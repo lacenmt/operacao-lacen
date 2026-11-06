@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OPERAÇÃO LACEN | Administração</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell wide">
+    <header class="top">
+      <div class="brand-mark">OL</div>
+      <div><p class="eyebrow">Painel de controle</p><h1>OPERAÇÃO LACEN</h1><p class="muted">Administração e acompanhamento</p></div>
+    </header>
+    <section class="panel" id="admin-login-panel">
+      <p class="eyebrow">Acesso restrito</p><h2>Entrar como administrador</h2>
+      <form id="admin-login-form" class="stack">
+        <label>E-mail<input id="admin-email" type="email" required></label>
+        <label>Senha<input id="admin-password" type="password" required></label>
+        <button class="primary" type="submit">Entrar</button>
+        <p id="admin-login-message" class="message" aria-live="polite"></p>
+      </form>
+    </section>
+    <section class="hidden" id="dashboard">
+      <div class="row between panel">
+        <div>
+          <p class="eyebrow">Visão geral</p>
+          <h2>Painel administrativo</h2>
+          <p class="muted">Atualização automática a cada 15 segundos e quando houver novos registros.</p>
+          <p id="last-updated" class="muted" aria-live="polite">Aguardando atualização…</p>
+        </div>
+        <div class="row">
+          <button class="ghost small" id="admin-refresh" type="button">↻ Atualizar dados</button>
+          <button class="ghost small" id="admin-logout" type="button">Sair</button>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <section class="panel">
+        <div class="section-head"><h3>Ranking das equipes</h3><span class="pill">Pontuação</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Pos.</th><th>Equipe</th><th>Estações</th><th>Pontos</th></tr></thead><tbody id="ranking-body"></tbody></table></div>
+      </section>
+      <section class="panel">
+        <div class="section-head"><h3>Resultados por estação</h3></div>
+        <div class="table-wrap"><table><thead><tr><th>Equipe</th><th>Estação</th><th>Resultado</th><th>Pontos</th><th>Horário</th></tr></thead><tbody id="results-body"></tbody></table></div>
+      </section>
+      <p id="dashboard-message" class="message" aria-live="polite"></p>
+    </section>
+    <footer>OPERAÇÃO LACEN · SES-MT</footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
