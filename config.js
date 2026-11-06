@@ -1,5 +1,4 @@
-// Preencha com os dados de Project Settings > API do seu projeto Supabase.
 window.APP_CONFIG = {
-  SUPABASE_URL: "COLE_AQUI_A_URL_DO_PROJETO",
-  SUPABASE_ANON_KEY: "COLE_AQUI_A_CHAVE_ANON"
+  SUPABASE_URL: "https://rwgurkynltrhskycscip.supabase.co",
+  SUPABASE_ANON_KEY: "SUA_CHAVE_SB_PUBLISHABLE"
 };
