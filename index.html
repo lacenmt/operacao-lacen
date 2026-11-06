@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OPERAÇÃO LACEN | Equipes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="brand-mark">OL</div>
+      <div><p class="eyebrow">Gincana institucional</p><h1>OPERAÇÃO LACEN</h1><p class="muted">Sistema de registro das estações</p></div>
+    </header>
+
+    <section class="panel" id="login-panel">
+      <p class="eyebrow">Acesso das equipes</p>
+      <h2>Identifique sua equipe</h2>
+      <p class="muted">Selecione o número da equipe e informe a senha de acesso entregue pela organização.</p>
+      <form id="login-form" class="stack">
+        <label>Equipe
+          <select id="team-number" required>
+            <option value="">Selecione</option>
+            <option value="1">Equipe 1</option><option value="2">Equipe 2</option>
+            <option value="3">Equipe 3</option><option value="4">Equipe 4</option>
+            <option value="5">Equipe 5</option><option value="6">Equipe 6</option>
+            <option value="7">Equipe 7</option>
+          </select>
+        </label>
+        <label>Senha da equipe<input id="team-pin" type="password" inputmode="numeric" autocomplete="off" required></label>
+        <button class="primary" type="submit">Entrar na operação</button>
+        <p id="login-message" class="message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="panel hidden" id="team-panel">
+      <div class="row between">
+        <div><p class="eyebrow">Área da equipe</p><h2 id="team-title">Equipe</h2></div>
+        <button class="ghost small" id="logout-button" type="button">Sair</button>
+      </div>
+      <div class="notice">Após concluir uma estação, digite o código de 6 caracteres fornecido pelo avaliador.</div>
+      <form id="code-form" class="stack">
+        <label>Código da estação<input id="station-code" maxlength="6" minlength="6" placeholder="Ex.: LA1847" autocomplete="off" required></label>
+        <button class="primary" type="submit">Validar código</button>
+        <p id="code-message" class="message" aria-live="polite"></p>
+      </form>
+      <div class="section-head"><h3>Seu progresso</h3><span id="progress-count" class="pill">0 de 7</span></div>
+      <div id="team-progress" class="progress-list"></div>
+    </section>
+    <footer>OPERAÇÃO LACEN · SES-MT</footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="team.js"></script>
+</body>
+</html>
