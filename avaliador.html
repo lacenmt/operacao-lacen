@@ -90,6 +90,58 @@
       font-size: .88rem;
       margin-top: 8px;
     }
+    /* CORREÇÃO VISUAL — CONTROLE DE VANTAGENS */
+.hints-summary > div,
+.hint-team-card {
+  background: #1a2b41 !important;
+  border: 1px solid #344a63 !important;
+  color: #f3f6fb !important;
+}
+
+.hints-summary strong,
+.hint-team-heading strong {
+  color: #f3f6fb !important;
+}
+
+.hints-summary span,
+.hint-color,
+.hint-count,
+.hint-note {
+  color: #b8c7d9 !important;
+}
+
+.hint-slot {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 7px;
+  background: #0d1928 !important;
+  border: 1px solid #405570 !important;
+  color: #f3f6fb !important;
+  border-radius: 9px;
+  padding: 8px 10px;
+}
+
+.hint-slot span {
+  color: #e1e9f2 !important;
+}
+
+.hint-slot input[type="checkbox"] {
+  width: 17px !important;
+  height: 17px !important;
+  padding: 0 !important;
+  accent-color: #e6b84f;
+  cursor: pointer;
+}
+
+.hint-slot:has(input:checked) {
+  border-color: #e6b84f !important;
+  background: #26374b !important;
+}
+
+.hint-slot input:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+}
   </style>
 </head>
 <body>
