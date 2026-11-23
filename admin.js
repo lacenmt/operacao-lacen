@@ -20,9 +20,9 @@
     2: "Pipetagem",
     3: "Biossegurança",
     4: "Gerenciamento de resíduos",
-    5: "Missão, visão e valores",
-    6: "Conhecimentos do LACEN",
-    7: "Qualidade e controle"
+    5: "Balança",
+    6: "Missão, Visão e Valores",
+    7: "A/P de Coliformes"
   };
 
   function say(message, kind = "") {
