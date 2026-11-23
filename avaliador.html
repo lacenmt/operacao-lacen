@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OPERAÇÃO LACEN | Administração</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hints-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 14px 0 18px;
+    }
+    .hints-summary > div {
+      flex: 1 1 140px;
+      padding: 14px 16px;
+      border: 1px solid var(--border, #ddd);
+      border-radius: 12px;
+      background: var(--card, #fff);
+    }
+    .hints-summary strong {
+      display: block;
+      font-size: 1.6rem;
+      line-height: 1.2;
+    }
+    .hints-summary span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted, #666);
+      font-size: .9rem;
+    }
+    .hints-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .hint-team-card {
+      border: 1px solid var(--border, #ddd);
+      border-radius: 12px;
+      padding: 14px;
+      background: var(--card, #fff);
+    }
+    .hint-team-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .hint-team-heading strong {
+      font-size: .98rem;
+    }
+    .hint-color {
+      color: var(--muted, #666);
+      font-size: .78rem;
+      white-space: nowrap;
+    }
+    .hint-count {
+      margin: 10px 0;
+      color: var(--muted, #666);
+      font-size: .88rem;
+    }
+    .hint-slots {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hint-slot {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 10px;
+      border: 1px solid var(--border, #ddd);
+      border-radius: 9px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .hint-slot input {
+      width: 17px;
+      height: 17px;
+      margin: 0;
+      cursor: pointer;
+    }
+    .hint-slot input:disabled {
+      cursor: not-allowed;
+    }
+    .hint-note {
+      color: var(--muted, #666);
+      font-size: .88rem;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main class="shell wide">
+    <header class="top">
+      <div class="brand-mark">OL</div>
+      <div>
+        <p class="eyebrow">Painel de controle</p>
+        <h1>OPERAÇÃO LACEN</h1>
+        <p class="muted">Administração e acompanhamento</p>
+      </div>
+    </header>
+
+    <section id="dashboard">
+      <div class="row between panel">
+        <div>
+          <p class="eyebrow">Visão geral</p>
+          <h2>Painel administrativo</h2>
+          <p class="muted">
+            Atualização automática a cada 15 segundos e quando houver novos registros.
+          </p>
+          <p id="last-updated" class="muted" aria-live="polite">
+            Aguardando atualização…
+          </p>
+        </div>
+
+        <div class="row">
+          <button class="ghost small" id="admin-refresh" type="button">
+            ↻ Atualizar dados
+          </button>
+        </div>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <section class="panel" id="hints-panel">
+        <div class="section-head">
+          <h3>Controle de vantagens estratégicas</h3>
+          <span class="pill">2 dicas por equipe</span>
+        </div>
+
+        <p class="muted">
+          Marque cada dica quando a equipe utilizá-la. O registro é salvo no Supabase
+          e compartilhado com os demais computadores.
+        </p>
+
+        <div class="hints-summary">
+          <div>
+            <strong id="hints-used">0</strong>
+            <span>Dicas utilizadas</span>
+          </div>
+          <div>
+            <strong id="hints-available">14</strong>
+            <span>Dicas disponíveis</span>
+          </div>
+        </div>
+
+        <div id="hints-teams" class="hints-grid">
+          <p class="muted">Carregando equipes…</p>
+        </div>
+        <p id="hints-message" class="message" aria-live="polite"></p>
+        <p class="hint-note">
+          Para corrigir uma marcação feita por engano, basta desmarcar a caixa correspondente.
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h3>Ranking das equipes</h3>
+          <span class="pill">Pontuação</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Pos.</th>
+                <th>Equipe</th>
+                <th>Estações</th>
+                <th>Pontos</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h3>Resultados por estação</h3>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Equipe</th>
+                <th>Estação</th>
+                <th>Resultado</th>
+                <th>Pontos</th>
+                <th>Horário</th>
+              </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <p id="dashboard-message" class="message" aria-live="polite"></p>
+    </section>
+
+    <footer>OPERAÇÃO LACEN · SES-MT</footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="avaliador.js"></script>
+</body>
+</html>
