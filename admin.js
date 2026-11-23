@@ -90,6 +90,9 @@
 
       const allTeams = teams || [];
       const allResults = results || [];
+      const teamNameById = Object.fromEntries(
+  allTeams.map(team => [team.id, team.name])
+);
 
       // CALCULAR RANKING
       const ranking = allTeams.map(team => {
