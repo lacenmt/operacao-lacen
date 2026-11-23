@@ -149,7 +149,7 @@
           const row = document.createElement("tr");
 
           const values = [
-            `Equipe ${result.team_id}`,
+            teamNameById[result.team_id] || `Equipe ${result.team_id}`,
 
             `${String(result.station_id).padStart(2, "0")} · ${
               stationNames[result.station_id] || "Estação"
