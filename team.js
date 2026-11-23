@@ -10,8 +10,8 @@
     const el = $(id); el.textContent = text; el.className = "message " + kind;
   }
   function stationName(id) {
-    return ({1:"Microscopia",2:"Pipetagem",3:"Biossegurança",4:"Gerenciamento de resíduos",
-      5:"Missão, visão e valores",6:"Conhecimentos do LACEN",7:"Qualidade e controle"})[id] || `Estação ${id}`;
+    return ({1:"Estação 01",2:"Estação 02",3:"Estação 03",4:"Estação 04",
+      5:"Estação 05",6:"Estação 06",7:"Estação 07"})[id] || `Estação ${id}`;
   }
   function showTeam() {
     loginPanel.classList.add("hidden"); teamPanel.classList.remove("hidden");
