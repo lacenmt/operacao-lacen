@@ -180,7 +180,7 @@
 
     message(
       "hints-message",
-      "Atualização automática a cada 15 segundos.",
+      "Atualização automática",
       "success"
     );
   }
