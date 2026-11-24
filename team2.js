@@ -44,7 +44,7 @@
       clearInterval(hintsRefreshTimer);
     }
 
-    hintsRefreshTimer = setInterval(loadHints, 15000);
+    hintsRefreshTimer = setInterval(loadHints, 2000);
   }
 
   async function loadProgress() {
