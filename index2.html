@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OPERAÇÃO LACEN | Equipes - Teste</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="brand-mark">OL</div>
+      <div><p class="eyebrow">Gincana institucional</p><h1>OPERAÇÃO LACEN</h1><p class="muted">Sistema de registro das estações</p></div>
+    </header>
+    <section class="panel" id="login-panel">
+      <p class="eyebrow">Acesso das equipes</p>
+      <h2>Identifique sua equipe</h2>
+      <p class="muted">Selecione o número da equipe e informe a senha de acesso entregue pela organização.</p>
+      <form id="login-form" class="stack">
+        <label>Equipe
+          <select id="team-number" required>
+            <option value="">Selecione</option>
+            <option value="1">Descalibrados</option><option value="2">Cópia Não Controlada</option>
+            <option value="3">Unidos na Missão</option><option value="4">Cepa Resistente</option>
+            <option value="5">Os Pipetinhas</option><option value="6">Esquadrão Não Para Nunca</option>
+            <option value="7">Esquadrão Tô Pronto!</option>
+          </select>
+        </label>
+        <label>Senha da equipe<input id="team-pin" type="password" inputmode="numeric" autocomplete="off" required></label>
+        <button class="primary" type="submit">Entrar na operação</button>
+        <p id="login-message" class="message" aria-live="polite"></p>
+      </form>
+    </section>
+    <section class="panel hidden" id="team-panel">
+      <div class="row between">
+        <div><p class="eyebrow">Área da equipe</p><h2 id="team-title">Equipe</h2></div>
+        <button class="ghost small" id="logout-button" type="button">Sair</button>
+      </div>
+      <div class="notice">Após concluir uma estação, digite o código de 6 caracteres fornecido pelo avaliador.</div>
+      <form id="code-form" class="stack">
+        <label>Código da estação<input id="station-code" maxlength="6" minlength="6" placeholder="Ex.: LA1847" autocomplete="off" required></label>
+        <button class="primary" type="submit">Validar código</button>
+        <p id="code-message" class="message" aria-live="polite"></p>
+      </form>
+      <div class="section-head"><h3>Seu progresso</h3><span id="progress-count" class="pill">0 de 7</span></div>
+      <div id="team-progress" class="progress-list"></div>
+
+      <div class="section-head"><h3>Suas dicas estratégicas</h3><span id="hints-count" class="pill">0 de 2 utilizadas</span></div>
+      <div class="notice">Cada equipe tem direito a duas dicas durante toda a gincana. O painel atualiza automaticamente quando o avaliador registrar uma utilização.</div>
+      <div id="team-hints" class="progress-list" aria-live="polite">
+        <p class="muted">As informações das dicas serão carregadas após o acesso.</p>
+      </div>
+      <p id="hints-message" class="message" aria-live="polite"></p>
+    </section>
+    <footer>OPERAÇÃO LACEN · SES-MT</footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="team2.js"></script>
+</body>
+</html>
